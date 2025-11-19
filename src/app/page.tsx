@@ -1,14 +1,14 @@
 import React from 'react'
-import Navbar from '../components/Navbar/Navbar'
-import Home from '../components/Home/Home'
-import Footer from '../components/Footer/Footer'
+import NavbarModern from '../components/Navbar/NavbarModern'
+import HomeModern from '../components/Home/HomeModern'
+import FooterModern from '../components/Footer/FooterModern'
 
 export default function Page() {
   return (
-    <div className="app">
-      <Navbar />
-      <Home />
-      <Footer />
-    </div>
+    <>
+      <NavbarModern />
+      <HomeModern />
+      <FooterModern />
+    </>
   )
 }

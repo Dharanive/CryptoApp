@@ -1,7 +1,7 @@
 import React from 'react'
-import Navbar from '../../../components/Navbar/Navbar'
-import Coin from '../../../components/Coin/Coin'
-import Footer from '../../../components/Footer/Footer'
+import NavbarModern from '../../../components/Navbar/NavbarModern'
+import CoinModern from '../../../components/Coin/CoinModern'
+import FooterModern from '../../../components/Footer/FooterModern'
 
 interface CoinPageProps {
   params: {
@@ -11,10 +11,10 @@ interface CoinPageProps {
 
 export default function CoinPage({ params }: CoinPageProps) {
   return (
-    <div className="app">
-      <Navbar />
-      <Coin coinId={params.coinId} />
-      <Footer />
-    </div>
+    <>
+      <NavbarModern />
+      <CoinModern coinId={params.coinId} />
+      <FooterModern />
+    </>
   )
 }
