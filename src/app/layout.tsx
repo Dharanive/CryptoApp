@@ -3,8 +3,8 @@ import '../styles/globals.css'
 import CoinContextProvider from '../context/CoinContext'
 
 export const metadata: Metadata = {
-  title: 'Crypto App',
-  description: 'A cryptocurrency tracking application',
+  title: 'Cryptos - Cryptocurrency Marketplace',
+  description: 'World\'s largest cryptocurrency marketplace. Track prices, analyze market data, and explore digital assets.',
 }
 
 export default function RootLayout({

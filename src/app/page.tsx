@@ -1,14 +1,14 @@
 import React from 'react'
-import NavbarModern from '../components/Navbar/NavbarModern'
-import HomeModern from '../components/Home/HomeModern'
-import FooterModern from '../components/Footer/FooterModern'
+import NavbarCryptos from '../components/Navbar/NavbarCryptos'
+import HomeCryptos from '../components/Home/HomeCryptos'
+import FooterCryptos from '../components/Footer/FooterCryptos'
 
 export default function Page() {
   return (
     <>
-      <NavbarModern />
-      <HomeModern />
-      <FooterModern />
+      <NavbarCryptos />
+      <HomeCryptos />
+      <FooterCryptos />
     </>
   )
 }
