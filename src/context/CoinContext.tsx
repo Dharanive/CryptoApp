@@ -15,6 +15,7 @@ interface CoinData {
   market_cap_rank: number;
   price_change_percentage_24h: number;
   image: string;
+  total_volume: number;
   // Add other properties as needed
 }
 
