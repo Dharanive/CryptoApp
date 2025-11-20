@@ -1,0 +1,48 @@
+/* CoinCryptos Theme Styles */
+.coin-cryptos-container {
+  background: #000000;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.light .coin-cryptos-container {
+  background: linear-gradient(to bottom, #ffffff, #fef9e7, #f8f1d4) !important;
+  color: #111827 !important;
+}
+
+/* Card backgrounds */
+.light .coin-card {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-color: rgba(255, 215, 0, 0.3) !important;
+}
+
+/* Text colors in light mode */
+.light .coin-title {
+  color: #111827 !important;
+}
+
+.light .coin-text {
+  color: #374151 !important;
+}
+
+.light .coin-price {
+  color: #111827 !important;
+}
+
+.light .coin-description {
+  color: #6b7280 !important;
+}
+
+/* Loading state */
+.light .coin-skeleton {
+  background: rgba(255, 215, 0, 0.1) !important;
+}
+
+.light .coin-loading-container {
+  background: linear-gradient(to bottom, #ffffff, #fef9e7, #f8f1d4) !important;
+}
+
+.light .coin-loading-card {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-color: rgba(255, 215, 0, 0.3) !important;
+}

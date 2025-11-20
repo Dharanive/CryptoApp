@@ -4,6 +4,7 @@ import './Navbar.css'
 import logo from '../../assets/logo.png'
 import arrow_icon from '../../assets/arrow_icon.png'
 import { CoinContext } from '../../context/CoinContext'
+import { ThemeToggle } from '../ui/theme-toggle'
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -55,6 +56,7 @@ const Navbar: React.FC = () => {
           <option value='eur'>EUR</option>
           <option value='inr'>INR</option>
         </select>
+        <ThemeToggle />
         <button>Sign up <Image src={arrow_icon} alt="arrow" width={16} height={16} /></button>
       </div>
     </div>

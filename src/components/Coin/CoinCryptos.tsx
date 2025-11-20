@@ -9,6 +9,7 @@ import { Skeleton } from '@/components/ui/skeleton'
 import { Separator } from '@/components/ui/separator'
 import { TrendingUp, TrendingDown, Star, BarChart3, Globe, Calendar, Bitcoin } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import './CoinCryptos.css'
 
 interface CoinCryptosProps {
   coinId: string;
@@ -106,26 +107,26 @@ const CoinCryptos: React.FC<CoinCryptosProps> = ({ coinId }) => {
 
   if (!coinData || !historicalData) {
     return (
-      <div className="min-h-screen bg-black">
-        <div className="container mx-auto px-4 py-20">
+      <div className="coin-loading-container min-h-screen bg-black">
+        <div className="container mx-auto px-4 pt-8 pb-20">
           <div className="max-w-6xl mx-auto space-y-8">
             {/* Header Skeleton */}
-            <Card className="bg-gray-900/30 border-gray-700">
+            <Card className="coin-loading-card bg-gray-900/30 border-gray-700">
               <CardContent className="p-8">
                 <div className="flex items-center gap-4">
-                  <Skeleton className="w-16 h-16 rounded-full bg-gray-700" />
+                  <Skeleton className="coin-skeleton w-16 h-16 rounded-full bg-gray-700" />
                   <div className="space-y-2">
-                    <Skeleton className="h-8 w-64 bg-gray-700" />
-                    <Skeleton className="h-4 w-32 bg-gray-700" />
+                    <Skeleton className="coin-skeleton h-8 w-64 bg-gray-700" />
+                    <Skeleton className="coin-skeleton h-4 w-32 bg-gray-700" />
                   </div>
                 </div>
               </CardContent>
             </Card>
 
             {/* Chart Skeleton */}
-            <Card className="bg-gray-900/30 border-gray-700">
+            <Card className="coin-loading-card bg-gray-900/30 border-gray-700">
               <CardContent className="p-8">
-                <Skeleton className="h-96 w-full bg-gray-700" />
+                <Skeleton className="coin-skeleton h-96 w-full bg-gray-700" />
               </CardContent>
             </Card>
 
@@ -134,8 +135,8 @@ const CoinCryptos: React.FC<CoinCryptosProps> = ({ coinId }) => {
               {Array.from({ length: 4 }).map((_, i) => (
                 <Card key={i} className="bg-gray-900/30 border-gray-700">
                   <CardContent className="p-6">
-                    <Skeleton className="h-4 w-20 mb-2 bg-gray-700" />
-                    <Skeleton className="h-6 w-32 bg-gray-700" />
+                    <Skeleton className="coin-skeleton h-4 w-20 mb-2 bg-gray-700" />
+                    <Skeleton className="coin-skeleton h-6 w-32 bg-gray-700" />
                   </CardContent>
                 </Card>
               ))}
@@ -150,12 +151,12 @@ const CoinCryptos: React.FC<CoinCryptosProps> = ({ coinId }) => {
   const isPositiveChange = priceChange24h > 0;
 
   return (
-    <div className="min-h-screen bg-black">
-      <div className="container mx-auto px-4 py-20">
+    <div className="coin-cryptos-container min-h-screen bg-black">
+      <div className="container mx-auto px-4 pt-8 pb-20">
         <div className="max-w-6xl mx-auto space-y-8">
 
           {/* Coin Header */}
-          <Card className="bg-gray-900/30 border-gray-700/50 backdrop-blur-sm">
+          <Card className="coin-card bg-gray-900/30 border-gray-700/50 backdrop-blur-sm">
             <CardContent className="p-8">
               <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
                 <div className="flex items-center gap-4">
@@ -168,7 +169,7 @@ const CoinCryptos: React.FC<CoinCryptosProps> = ({ coinId }) => {
                   />
                   <div>
                     <div className="flex items-center gap-3 mb-2">
-                      <h1 className="text-3xl font-bold text-white">
+                      <h1 className="coin-title text-3xl font-bold text-white">
                         {coinData.name}
                       </h1>
                       <Badge variant="secondary" className="bg-gray-700 text-gray-300">
@@ -179,7 +180,7 @@ const CoinCryptos: React.FC<CoinCryptosProps> = ({ coinId }) => {
                       </Badge>
                     </div>
                     <div className="flex items-center gap-3">
-                      <span className="text-2xl font-bold text-white">
+                      <span className="coin-price text-2xl font-bold text-white">
                         {currency.symbol} {coinData.market_data.current_price[currency.name].toLocaleString()}
                       </span>
                       <Badge
@@ -219,9 +220,9 @@ const CoinCryptos: React.FC<CoinCryptosProps> = ({ coinId }) => {
           </Card>
 
           {/* Price Chart */}
-          <Card className="bg-gray-900/30 border-gray-700/50 backdrop-blur-sm">
+          <Card className="coin-card bg-gray-900/30 border-gray-700/50 backdrop-blur-sm">
             <CardHeader>
-              <CardTitle className="flex items-center gap-3 text-white">
+              <CardTitle className="coin-title flex items-center gap-3 text-white">
                 <BarChart3 className="w-5 h-5 text-yellow-400" />
                 Price Chart
                 <Badge variant="outline" className="ml-auto border-gray-600 text-gray-400">
@@ -238,49 +239,49 @@ const CoinCryptos: React.FC<CoinCryptosProps> = ({ coinId }) => {
 
           {/* Statistics Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <Card className="bg-gray-900/30 border-gray-700/50 backdrop-blur-sm">
+            <Card className="coin-card bg-gray-900/30 border-gray-700/50 backdrop-blur-sm">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-gray-400 text-sm">Market Cap</span>
                   <BarChart3 className="w-4 h-4 text-yellow-400" />
                 </div>
-                <p className="text-xl font-semibold text-white">
+                <p className="coin-text text-xl font-semibold text-white">
                   {currency.symbol} {formatNumber(coinData.market_data.market_cap[currency.name])}
                 </p>
               </CardContent>
             </Card>
 
-            <Card className="bg-gray-900/30 border-gray-700/50 backdrop-blur-sm">
+            <Card className="coin-card bg-gray-900/30 border-gray-700/50 backdrop-blur-sm">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-gray-400 text-sm">24H High</span>
                   <TrendingUp className="w-4 h-4 text-green-400" />
                 </div>
-                <p className="text-xl font-semibold text-white">
+                <p className="coin-text text-xl font-semibold text-white">
                   {currency.symbol} {coinData.market_data.high_24h[currency.name].toLocaleString()}
                 </p>
               </CardContent>
             </Card>
 
-            <Card className="bg-gray-900/30 border-gray-700/50 backdrop-blur-sm">
+            <Card className="coin-card bg-gray-900/30 border-gray-700/50 backdrop-blur-sm">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-gray-400 text-sm">24H Low</span>
                   <TrendingDown className="w-4 h-4 text-red-400" />
                 </div>
-                <p className="text-xl font-semibold text-white">
+                <p className="coin-text text-xl font-semibold text-white">
                   {currency.symbol} {coinData.market_data.low_24h[currency.name].toLocaleString()}
                 </p>
               </CardContent>
             </Card>
 
-            <Card className="bg-gray-900/30 border-gray-700/50 backdrop-blur-sm">
+            <Card className="coin-card bg-gray-900/30 border-gray-700/50 backdrop-blur-sm">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-gray-400 text-sm">24H Volume</span>
                   <Bitcoin className="w-4 h-4 text-yellow-400" />
                 </div>
-                <p className="text-xl font-semibold text-white">
+                <p className="coin-text text-xl font-semibold text-white">
                   {currency.symbol} {formatNumber(coinData.market_data.total_volume[currency.name])}
                 </p>
               </CardContent>
@@ -289,21 +290,21 @@ const CoinCryptos: React.FC<CoinCryptosProps> = ({ coinId }) => {
 
           {/* Additional Info */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <Card className="bg-gray-900/30 border-gray-700/50 backdrop-blur-sm">
+            <Card className="coin-card bg-gray-900/30 border-gray-700/50 backdrop-blur-sm">
               <CardHeader>
-                <CardTitle className="text-white">Supply Information</CardTitle>
+                <CardTitle className="coin-title text-white">Supply Information</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex justify-between items-center">
                   <span className="text-gray-400">Circulating Supply</span>
-                  <span className="text-white font-semibold">
+                  <span className="coin-text text-white font-semibold">
                     {formatNumber(coinData.market_data.circulating_supply)} {coinData.symbol.toUpperCase()}
                   </span>
                 </div>
                 <Separator className="bg-gray-700" />
                 <div className="flex justify-between items-center">
                   <span className="text-gray-400">Total Supply</span>
-                  <span className="text-white font-semibold">
+                  <span className="coin-text text-white font-semibold">
                     {coinData.market_data.total_supply
                       ? `${formatNumber(coinData.market_data.total_supply)} ${coinData.symbol.toUpperCase()}`
                       : 'N/A'
@@ -313,9 +314,9 @@ const CoinCryptos: React.FC<CoinCryptosProps> = ({ coinId }) => {
               </CardContent>
             </Card>
 
-            <Card className="bg-gray-900/30 border-gray-700/50 backdrop-blur-sm">
+            <Card className="coin-card bg-gray-900/30 border-gray-700/50 backdrop-blur-sm">
               <CardHeader>
-                <CardTitle className="text-white">Quick Stats</CardTitle>
+                <CardTitle className="coin-title text-white">Quick Stats</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex justify-between items-center">

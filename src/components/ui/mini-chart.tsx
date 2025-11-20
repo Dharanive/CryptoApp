@@ -1,4 +1,5 @@
 import React from 'react'
+import './mini-chart.css'
 
 interface MiniChartProps {
   data: number[]
@@ -18,7 +19,7 @@ export const MiniChart: React.FC<MiniChartProps> = ({
   if (!data || data.length < 2) {
     return (
       <div
-        className="flex items-center justify-center bg-gray-800/30 rounded"
+        className="mini-chart-no-data flex items-center justify-center bg-gray-800/30 rounded"
         style={{ width, height }}
       >
         <span className="text-gray-500 text-xs">No data</span>
@@ -64,8 +65,7 @@ export const MiniChart: React.FC<MiniChartProps> = ({
       <svg
         width={width}
         height={height}
-        className="rounded"
-        style={{ background: 'rgba(31, 41, 55, 0.3)' }}
+        className="mini-chart-svg rounded"
       >
         {/* Background grid lines */}
         <defs>

@@ -1,0 +1,35 @@
+/* FooterCryptos Theme Styles */
+.footer-cryptos {
+  background: #000000;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.light .footer-cryptos {
+  background: #ffffff !important;
+  border-color: rgba(255, 215, 0, 0.2) !important;
+}
+
+.light .footer-brand-text {
+  color: #111827 !important;
+}
+
+.light .footer-description {
+  color: #6b7280 !important;
+}
+
+.light .footer-link {
+  color: #374151 !important;
+}
+
+.light .footer-link:hover {
+  color: #d97706 !important;
+}
+
+.light .footer-heading {
+  color: #111827 !important;
+}
+
+.light .footer-copyright {
+  color: #6b7280 !important;
+}

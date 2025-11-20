@@ -4,12 +4,13 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
 import { Badge } from '@/components/ui/badge'
 import { Bitcoin, Twitter, Linkedin, Heart, Activity } from 'lucide-react'
+import './FooterCryptos.css'
 
 const FooterCryptos: React.FC = () => {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="bg-black border-t border-gray-800">
+    <footer className="footer-cryptos bg-black border-t border-gray-800">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand Section */}
@@ -46,16 +47,16 @@ const FooterCryptos: React.FC = () => {
           <div className="space-y-4">
             <h3 className="text-white font-semibold">Exchange</h3>
             <div className="space-y-3">
-              <Link href="#" className="block text-gray-400 hover:text-yellow-400 transition-colors text-sm">
+              <Link href="#" className="footer-link block text-gray-400 hover:text-yellow-400 transition-colors text-sm">
                 Buy Crypto
               </Link>
-              <Link href="#" className="block text-gray-400 hover:text-yellow-400 transition-colors text-sm">
+              <Link href="#" className="footer-link block text-gray-400 hover:text-yellow-400 transition-colors text-sm">
                 Sell Crypto
               </Link>
-              <Link href="#" className="block text-gray-400 hover:text-yellow-400 transition-colors text-sm">
+              <Link href="#" className="footer-link block text-gray-400 hover:text-yellow-400 transition-colors text-sm">
                 Trading Pairs
               </Link>
-              <Link href="#" className="block text-gray-400 hover:text-yellow-400 transition-colors text-sm">
+              <Link href="#" className="footer-link block text-gray-400 hover:text-yellow-400 transition-colors text-sm">
                 Market Data
               </Link>
             </div>
@@ -65,16 +66,16 @@ const FooterCryptos: React.FC = () => {
           <div className="space-y-4">
             <h3 className="text-white font-semibold">Products</h3>
             <div className="space-y-3">
-              <Link href="#" className="block text-gray-400 hover:text-yellow-400 transition-colors text-sm">
+              <Link href="#" className="footer-link block text-gray-400 hover:text-yellow-400 transition-colors text-sm">
                 Spot Trading
               </Link>
-              <Link href="#" className="block text-gray-400 hover:text-yellow-400 transition-colors text-sm">
+              <Link href="#" className="footer-link block text-gray-400 hover:text-yellow-400 transition-colors text-sm">
                 Futures Trading
               </Link>
-              <Link href="#" className="block text-gray-400 hover:text-yellow-400 transition-colors text-sm">
+              <Link href="#" className="footer-link block text-gray-400 hover:text-yellow-400 transition-colors text-sm">
                 Crypto Wallet
               </Link>
-              <Link href="#" className="block text-gray-400 hover:text-yellow-400 transition-colors text-sm">
+              <Link href="#" className="footer-link block text-gray-400 hover:text-yellow-400 transition-colors text-sm">
                 DeFi Staking
               </Link>
             </div>
@@ -84,16 +85,16 @@ const FooterCryptos: React.FC = () => {
           <div className="space-y-4">
             <h3 className="text-white font-semibold">Support</h3>
             <div className="space-y-3">
-              <Link href="#" className="block text-gray-400 hover:text-yellow-400 transition-colors text-sm">
+              <Link href="#" className="footer-link block text-gray-400 hover:text-yellow-400 transition-colors text-sm">
                 Help Center
               </Link>
-              <Link href="#" className="block text-gray-400 hover:text-yellow-400 transition-colors text-sm">
+              <Link href="#" className="footer-link block text-gray-400 hover:text-yellow-400 transition-colors text-sm">
                 API Documentation
               </Link>
-              <Link href="#" className="block text-gray-400 hover:text-yellow-400 transition-colors text-sm">
+              <Link href="#" className="footer-link block text-gray-400 hover:text-yellow-400 transition-colors text-sm">
                 Security
               </Link>
-              <Link href="#" className="block text-gray-400 hover:text-yellow-400 transition-colors text-sm">
+              <Link href="#" className="footer-link block text-gray-400 hover:text-yellow-400 transition-colors text-sm">
                 Contact Us
               </Link>
             </div>

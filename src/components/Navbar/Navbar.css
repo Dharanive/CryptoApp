@@ -3,12 +3,18 @@
     width: max(12vw , 120px);
 }
 .navbar {
-    display: flex; 
+    display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 20px 10%;
     color: #ddd;
     border-bottom: 2px solid #3c3c3c;
+    transition: all 0.3s ease;
+}
+
+.light .navbar {
+    color: #333;
+    border-bottom: 2px solid #e6d5a3;
 }
 .navbar ul{
     display: flex;
@@ -31,11 +37,22 @@
     border: 2px solid white;
     background: transparent;
     color: white;
+    transition: all 0.3s ease;
+}
+
+.light .navbar select {
+    border: 2px solid #d4af37;
+    color: #333;
 }
 
 .navbar option{
     background-color: #09005c;
     color: white;
+}
+
+.light .navbar option{
+    background-color: #ffd700;
+    color: #333;
 }
 .navbar button{
     display: flex;

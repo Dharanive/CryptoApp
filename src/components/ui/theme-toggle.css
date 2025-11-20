@@ -1,0 +1,16 @@
+/* Theme Toggle Styles */
+.theme-toggle-btn {
+  transition: all 0.3s ease;
+}
+
+.light .theme-toggle-btn {
+  background: #ffffff !important;
+  border-color: #d4af37 !important;
+  color: #b45309 !important;
+}
+
+.light .theme-toggle-btn:hover {
+  background: #f8f1d4 !important;
+  border-color: #d4af37 !important;
+  color: #b45309 !important;
+}

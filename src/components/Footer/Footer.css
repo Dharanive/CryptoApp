@@ -5,4 +5,9 @@
     border-top: 1px solid #989898;
     padding: 15px 0px;
     font-size: 13px;
+    transition: border-top 0.3s ease;
+}
+
+.light .footer{
+    border-top: 1px solid #d4af37;
 }

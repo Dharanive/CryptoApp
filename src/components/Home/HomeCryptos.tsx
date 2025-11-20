@@ -17,12 +17,15 @@ import {
   ExternalLink, Flame, Check
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import './HomeCryptos.css'
 
 const HomeeCryptos: React.FC = () => {
   const context = useContext(CoinContext);
   const [displayCoin, setDisplayCoin] = useState<typeof allCoin>([]);
   const [input, setInput] = useState<string>('');
   const [highlightsVisible, setHighlightsVisible] = useState<boolean>(true);
+  const [showDropdown, setShowDropdown] = useState<boolean>(false);
+  const [searchResults, setSearchResults] = useState<typeof allCoin>([]);
 
   // Load highlights state from localStorage on component mount
   useEffect(() => {
@@ -62,14 +65,37 @@ const HomeeCryptos: React.FC = () => {
   const inputHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInput(event.target.value);
     if (event.target.value === "") {
-      setDisplayCoin(allCoin);
+      setShowDropdown(false);
+      setSearchResults([]);
+    } else {
+      const coins = allCoin.filter((item) => {
+        return item.name.toLowerCase().includes(event.target.value.toLowerCase())
+      });
+      setSearchResults(coins);
+      setShowDropdown(true);
     }
   }
 
   const searchHandler = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (input.trim() === "") return;
+
     const coins = allCoin.filter((item) => {
       return item.name.toLowerCase().includes(input.toLowerCase())
+    })
+    setDisplayCoin(coins);
+    setShowDropdown(false);
+  }
+
+  const selectCoin = (coinName: string, event?: React.MouseEvent) => {
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    setInput(coinName);
+    setShowDropdown(false);
+    const coins = allCoin.filter((item) => {
+      return item.name.toLowerCase().includes(coinName.toLowerCase())
     })
     setDisplayCoin(coins);
   }
@@ -150,10 +176,10 @@ const HomeeCryptos: React.FC = () => {
     }))
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-black">
+    <div className="home-cryptos-container relative min-h-screen overflow-hidden">
 
       {/* Hero Section */}
-      <div className="relative container mx-auto px-4 pt-32 pb-20">
+      <div className="relative container mx-auto px-4 pt-8 pb-20">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <motion.div
@@ -163,7 +189,7 @@ const HomeeCryptos: React.FC = () => {
             className="space-y-8"
           >
             <motion.h1
-              className="text-5xl md:text-7xl font-bold text-white leading-tight"
+              className="hero-title text-5xl md:text-7xl font-bold text-white leading-tight"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -178,7 +204,7 @@ const HomeeCryptos: React.FC = () => {
             </motion.h1>
 
             <motion.p
-              className="text-xl text-gray-400 max-w-lg leading-relaxed"
+              className="hero-description text-xl text-gray-400 max-w-lg leading-relaxed"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.4 }}
@@ -247,10 +273,10 @@ const HomeeCryptos: React.FC = () => {
                 "bg-gradient-to-r from-yellow-500/20 to-amber-500/20 group-hover:scale-110 group-hover:from-yellow-500/30 group-hover:to-amber-500/30")}>
                 <stat.icon className={cn("w-8 h-8", stat.color)} />
               </div>
-              <div className="text-4xl font-bold text-white mb-2 group-hover:text-yellow-400 transition-colors">
+              <div className="stat-value text-4xl font-bold text-white mb-2 group-hover:text-yellow-400 transition-colors">
                 {stat.value}
               </div>
-              <div className="text-gray-400 font-medium">{stat.label}</div>
+              <div className="card-text text-gray-400 font-medium">{stat.label}</div>
             </motion.div>
           ))}
         </div>
@@ -268,10 +294,10 @@ const HomeeCryptos: React.FC = () => {
             viewport={{ once: true }}
           >
             <div>
-              <h2 className="text-4xl font-bold text-white mb-2">
+              <h2 className="card-title text-4xl font-bold text-white mb-2">
                 Cryptocurrency Prices by Market Cap
               </h2>
-              <p className="text-gray-400">
+              <p className="card-text text-gray-400">
                 The global cryptocurrency market cap today is {currency.symbol}{(totalMarketCap / 1e12).toFixed(2)} Trillion, a{" "}
                 <span className={marketChange >= 0 ? "text-green-400" : "text-red-400"}>
                   {marketChange >= 0 ? "▲" : "▼"} {Math.abs(marketChange).toFixed(1)}%
@@ -319,15 +345,15 @@ const HomeeCryptos: React.FC = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                   {/* Market Stats */}
                   <div className="lg:col-span-1">
-                    <Card className="bg-gray-900/30 border-gray-700/50 backdrop-blur-sm h-full">
+                    <Card className="market-card bg-gray-900/30 border-gray-700/50 backdrop-blur-sm h-full">
                       <CardContent className="p-6">
                         <div className="space-y-6">
                           <div>
-                            <div className="text-3xl font-bold text-white mb-1">
+                            <div className="market-stats-value text-3xl font-bold text-white mb-1">
                               {currency.symbol}{(totalMarketCap / 1e9).toFixed(0)}B
                             </div>
                             <div className="flex items-center gap-2 text-sm">
-                              <span className="text-gray-400">Market Cap</span>
+                              <span className="market-stats-label text-gray-400">Market Cap</span>
                               <span className={marketChange >= 0 ? "text-green-400" : "text-red-400"}>
                                 {marketChange >= 0 ? "▲" : "▼"} {Math.abs(marketChange).toFixed(1)}%
                               </span>
@@ -340,10 +366,10 @@ const HomeeCryptos: React.FC = () => {
                             />
                           </div>
                           <div>
-                            <div className="text-3xl font-bold text-white mb-1">
+                            <div className="market-stats-value text-3xl font-bold text-white mb-1">
                               {currency.symbol}{(totalVolume / 1e9).toFixed(0)}B
                             </div>
-                            <div className="text-gray-400 text-sm">24h Trading Volume</div>
+                            <div className="market-stats-label text-gray-400 text-sm">24h Trading Volume</div>
                             <MiniChart
                               data={generateChartData('volume')}
                               width={200}
@@ -358,7 +384,7 @@ const HomeeCryptos: React.FC = () => {
 
                   {/* Trending Section */}
                   <div className="lg:col-span-1">
-                    <Card className="bg-gray-900/30 border-gray-700/50 backdrop-blur-sm h-full">
+                    <Card className="market-card bg-gray-900/30 border-gray-700/50 backdrop-blur-sm h-full">
                       <CardHeader className="pb-4">
                         <CardTitle className="flex items-center gap-3 text-xl text-white">
                           <div className="w-8 h-8 bg-orange-500/20 rounded-full flex items-center justify-center">
@@ -394,12 +420,12 @@ const HomeeCryptos: React.FC = () => {
                                   </div>
                                 )}
                                 <div>
-                                  <div className="text-white font-medium">{coin.name}</div>
-                                  <div className="text-gray-400 text-xs">{coin.symbol}</div>
+                                  <div className="crypto-name text-white font-medium">{coin.name}</div>
+                                  <div className="crypto-symbol text-gray-400 text-xs">{coin.symbol}</div>
                                 </div>
                               </div>
                               <div className="text-right">
-                                <div className="text-white font-medium text-sm">{coin.price}</div>
+                                <div className="crypto-price text-white font-medium text-sm">{coin.price}</div>
                                 <div className={cn("text-xs", coin.changeColor)}>{coin.change}</div>
                               </div>
                             </div>
@@ -411,7 +437,7 @@ const HomeeCryptos: React.FC = () => {
 
                   {/* Top Gainers Section */}
                   <div className="lg:col-span-1">
-                    <Card className="bg-gray-900/30 border-gray-700/50 backdrop-blur-sm h-full">
+                    <Card className="market-card bg-gray-900/30 border-gray-700/50 backdrop-blur-sm h-full">
                       <CardHeader className="pb-4">
                         <CardTitle className="flex items-center gap-3 text-xl text-white">
                           <div className="w-8 h-8 bg-green-500/20 rounded-full flex items-center justify-center">
@@ -447,12 +473,12 @@ const HomeeCryptos: React.FC = () => {
                                   </div>
                                 )}
                                 <div>
-                                  <div className="text-white font-medium">{coin.name}</div>
-                                  <div className="text-gray-400 text-xs">{coin.symbol}</div>
+                                  <div className="crypto-name text-white font-medium">{coin.name}</div>
+                                  <div className="crypto-symbol text-gray-400 text-xs">{coin.symbol}</div>
                                 </div>
                               </div>
                               <div className="text-right">
-                                <div className="text-white font-medium text-sm">{coin.price}</div>
+                                <div className="crypto-price text-white font-medium text-sm">{coin.price}</div>
                                 <div className={cn("text-xs", coin.changeColor)}>{coin.change}</div>
                               </div>
                             </div>
@@ -477,10 +503,10 @@ const HomeeCryptos: React.FC = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <Card className="bg-gray-900/20 border-gray-700/50 backdrop-blur-sm shadow-2xl overflow-hidden">
+            <Card className="crypto-table-card bg-gray-900/20 border-gray-700/50 backdrop-blur-sm shadow-2xl overflow-hidden">
               <CardHeader className="p-8">
                 <div className="flex flex-col gap-6">
-                  <CardTitle className="flex items-center gap-4 text-3xl text-white">
+                  <CardTitle className="card-title flex items-center gap-4 text-3xl text-white">
                     <Bitcoin className="w-8 h-8 text-yellow-400" />
                     Top Cryptocurrencies
                     <Badge variant="outline" className="ml-auto border-yellow-500 text-yellow-400 bg-yellow-500/10 px-4 py-2">
@@ -490,24 +516,78 @@ const HomeeCryptos: React.FC = () => {
                   </CardTitle>
 
                   {/* Search Section */}
-                  <div className="max-w-lg">
-                    <Card className="bg-gray-800/30 border-gray-600/30 backdrop-blur-sm">
+                  <div className="max-w-lg relative">
+                    <Card className="search-card bg-gray-800/30 border-gray-600/30 backdrop-blur-sm">
                       <CardContent className="p-4">
                         <form onSubmit={searchHandler} className="flex gap-3">
                           <div className="relative flex-1">
-                            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 z-10" />
                             <Input
                               onChange={inputHandler}
-                              list='coinlist'
                               value={input}
                               type='text'
                               placeholder='Search cryptocurrencies...'
-                              className="pl-10 bg-gray-700/50 border-gray-500/50 text-white placeholder:text-gray-400 focus:border-yellow-500 focus:ring-2 focus:ring-yellow-500/20"
-                              required
+                              className="search-input pl-10 bg-gray-700/50 border-gray-500/50 text-white placeholder:text-gray-400 focus:border-yellow-500 focus:ring-2 focus:ring-yellow-500/20"
+                              onFocus={() => input && setShowDropdown(true)}
+                              onBlur={() => setTimeout(() => setShowDropdown(false), 200)}
                             />
-                            <datalist id='coinlist'>
-                              {allCoin.map((item, index) => (<option key={index} value={item.name} />))}
-                            </datalist>
+
+                            {/* Search Dropdown */}
+                            {showDropdown && searchResults.length > 0 && (
+                              <AnimatePresence>
+                                <motion.div
+                                  initial={{ opacity: 0, y: -10 }}
+                                  animate={{ opacity: 1, y: 0 }}
+                                  exit={{ opacity: 0, y: -10 }}
+                                  transition={{ duration: 0.2 }}
+                                  className="search-dropdown absolute top-full left-0 right-0 mt-2 bg-white border border-gray-200 rounded-lg shadow-xl z-[60] max-h-80 overflow-hidden"
+                                >
+                                  <div className="search-dropdown-header p-3 bg-gray-50 border-b border-gray-200">
+                                    <p className="search-dropdown-title text-sm font-medium text-gray-700">
+                                      Search Results ({searchResults.length} found)
+                                    </p>
+                                  </div>
+
+                                  <div className="search-dropdown-content max-h-64 overflow-y-auto">
+                                    {searchResults.map((coin, index) => (
+                                      <motion.div
+                                        key={coin.id}
+                                        initial={{ opacity: 0, x: -20 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        transition={{ duration: 0.2, delay: index * 0.05 }}
+                                        onClick={(e) => selectCoin(coin.name, e)}
+                                        className="search-dropdown-item p-4 hover:bg-yellow-50 cursor-pointer border-b border-gray-100 last:border-b-0 transition-all duration-200"
+                                      >
+                                        <div className="flex items-center gap-3">
+                                          <Image
+                                            src={coin.image}
+                                            alt={coin.name}
+                                            width={32}
+                                            height={32}
+                                            className="rounded-full"
+                                          />
+                                          <div className="flex-1">
+                                            <div className="coin-name font-semibold text-gray-900">{coin.name}</div>
+                                            <div className="coin-symbol text-sm text-gray-500 uppercase">{coin.symbol}</div>
+                                          </div>
+                                          <div className="coin-price text-right">
+                                            <div className="text-gray-900 font-medium">
+                                              {currency.symbol}{coin.current_price?.toLocaleString()}
+                                            </div>
+                                            <div className={cn("text-xs",
+                                              coin.price_change_percentage_24h > 0 ? "text-green-600" : "text-red-600")}>
+                                              {coin.price_change_percentage_24h > 0 ? "+" : ""}
+                                              {coin.price_change_percentage_24h?.toFixed(2)}%
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </motion.div>
+                                    ))}
+
+                                  </div>
+                                </motion.div>
+                              </AnimatePresence>
+                            )}
                           </div>
                           <Button
                             type='submit'
@@ -523,7 +603,7 @@ const HomeeCryptos: React.FC = () => {
               </CardHeader>
               <CardContent className="p-0">
                 {/* Table Header */}
-                <div className="grid grid-cols-6 gap-4 p-8 border-b border-gray-700/50 text-gray-400 font-semibold text-sm uppercase tracking-wider">
+                <div className="table-header grid grid-cols-6 gap-4 p-8 border-b border-gray-700/50 text-gray-400 font-semibold text-sm uppercase tracking-wider">
                   <div className="text-center">Rank</div>
                   <div>Asset</div>
                   <div className="text-right">Price</div>
@@ -546,10 +626,10 @@ const HomeeCryptos: React.FC = () => {
                           scale: 1.01,
                           transition: { duration: 0.2 }
                         }}
-                        className="grid grid-cols-6 gap-4 p-8 hover:bg-yellow-500/5 transition-all duration-300 group cursor-pointer"
+                        className="crypto-row grid grid-cols-6 gap-4 p-8 hover:bg-yellow-500/5 transition-all duration-300 group cursor-pointer"
                       >
                         <div className="flex items-center justify-center">
-                          <Badge variant="outline" className="border-gray-600 text-gray-300 group-hover:border-yellow-400 group-hover:text-yellow-300 transition-colors">
+                          <Badge variant="outline" className="rank-badge border-gray-600 text-gray-300 group-hover:border-yellow-400 group-hover:text-yellow-300 transition-colors">
                             #{item.market_cap_rank}
                           </Badge>
                         </div>
@@ -563,17 +643,17 @@ const HomeeCryptos: React.FC = () => {
                             className="rounded-full group-hover:shadow-lg transition-all"
                           />
                           <div className="flex flex-col">
-                            <span className="font-bold text-white group-hover:text-yellow-300 transition-colors text-lg">
+                            <span className="crypto-name font-bold text-white group-hover:text-yellow-300 transition-colors text-lg">
                               {item.name}
                             </span>
-                            <span className="text-gray-400 uppercase font-medium tracking-wider">
+                            <span className="crypto-symbol text-gray-400 uppercase font-medium tracking-wider">
                               {item.symbol}
                             </span>
                           </div>
                         </Link>
 
                         <div className="text-right">
-                          <div className="font-bold text-white text-lg group-hover:text-yellow-400 transition-colors">
+                          <div className="crypto-price font-bold text-white text-lg group-hover:text-yellow-400 transition-colors">
                             {currency.symbol} {item.current_price.toLocaleString()}
                           </div>
                         </div>
@@ -597,7 +677,7 @@ const HomeeCryptos: React.FC = () => {
                           </Badge>
                         </div>
 
-                        <div className="text-right font-bold text-gray-300 text-lg">
+                        <div className="market-cap-text text-right font-bold text-gray-300 text-lg">
                           {currency.symbol} {(item.market_cap / 1e9).toFixed(2)}B
                         </div>
 
