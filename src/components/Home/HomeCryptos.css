@@ -1,0 +1,356 @@
+/* HomeCryptos Theme Styles */
+.home-cryptos-container {
+  background: #000000;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.light .home-cryptos-container {
+  background: linear-gradient(to bottom, #ffffff, #fef9e7, #f8f1d4) !important;
+  color: #111827 !important;
+}
+
+/* Hero text styling */
+.light .hero-title {
+  color: #111827 !important;
+}
+
+.light .hero-description {
+  color: #6b7280 !important;
+}
+
+/* Card backgrounds */
+.light .stats-card {
+  background: rgba(255, 215, 0, 0.05) !important;
+  border-color: rgba(255, 215, 0, 0.2) !important;
+  color: #111827 !important;
+}
+
+.light .market-card {
+  background: rgba(255, 255, 255, 0.8) !important;
+  border-color: rgba(255, 215, 0, 0.3) !important;
+}
+
+.light .crypto-table-card {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-color: rgba(255, 215, 0, 0.3) !important;
+}
+
+.light .search-card {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-color: rgba(255, 215, 0, 0.3) !important;
+}
+
+/* Text colors in light mode */
+.light .card-title {
+  color: #111827 !important;
+}
+
+.light .card-text {
+  color: #374151 !important;
+}
+
+.light .stat-value {
+  color: #111827 !important;
+}
+
+.light .crypto-name {
+  color: #111827 !important;
+}
+
+.light .crypto-symbol {
+  color: #6b7280 !important;
+}
+
+.light .crypto-price {
+  color: #111827 !important;
+}
+
+.light .market-cap-text {
+  color: #374151 !important;
+}
+
+.light .table-header {
+  color: #6b7280 !important;
+}
+
+.light .search-input {
+  background: rgba(255, 215, 0, 0.1) !important;
+  border-color: rgba(255, 215, 0, 0.3) !important;
+  color: #111827 !important;
+}
+
+.light .search-input::placeholder {
+  color: #9ca3af !important;
+}
+
+/* Trending coin hover effects */
+.trending-coin-item {
+  transition: all 0.2s ease;
+}
+
+.trending-coin-item:hover {
+  background: rgba(251, 191, 36, 0.05) !important;
+}
+
+.light .trending-coin-item:hover {
+  background: rgba(255, 215, 0, 0.08) !important;
+}
+
+/* Make sure text stays visible on hover in light mode */
+.light .trending-coin-item:hover .crypto-name {
+  color: #111827 !important;
+}
+
+.light .trending-coin-item:hover .crypto-price {
+  color: #111827 !important;
+}
+
+.light .trending-coin-item:hover .crypto-symbol {
+  color: #6b7280 !important;
+}
+
+/* Badge styling */
+.light .rank-badge {
+  border-color: #d4af37 !important;
+  color: #b45309 !important;
+  background: rgba(255, 215, 0, 0.1) !important;
+}
+
+/* Hover effects in light mode */
+.light .crypto-row:hover {
+  background: rgba(255, 215, 0, 0.1) !important;
+}
+
+/* Market stats specific styling */
+.light .market-stats-text {
+  color: #111827 !important;
+}
+
+.light .market-stats-value {
+  color: #111827 !important;
+}
+
+.light .market-stats-label {
+  color: #6b7280 !important;
+}
+
+/* Search input specific styling */
+.light .search-input {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-color: rgba(255, 215, 0, 0.5) !important;
+  color: #111827 !important;
+}
+
+.light .search-input::placeholder {
+  color: #9ca3af !important;
+}
+
+/* Trending coin hover effects */
+.trending-coin-item {
+  transition: all 0.2s ease;
+}
+
+.trending-coin-item:hover {
+  background: rgba(251, 191, 36, 0.05) !important;
+}
+
+.light .trending-coin-item:hover {
+  background: rgba(255, 215, 0, 0.08) !important;
+}
+
+/* Make sure text stays visible on hover in light mode */
+.light .trending-coin-item:hover .crypto-name {
+  color: #111827 !important;
+}
+
+.light .trending-coin-item:hover .crypto-price {
+  color: #111827 !important;
+}
+
+.light .trending-coin-item:hover .crypto-symbol {
+  color: #6b7280 !important;
+}
+
+/* View more button styling for light mode */
+.light .text-gray-400 {
+  color: #9ca3af !important;
+}
+
+.light .text-gray-400:hover {
+  color: #d4af37 !important;
+  background-color: rgba(212, 175, 55, 0.1) !important;
+}
+
+/* Specific styling for view more buttons in cards */
+.light button.text-gray-400 {
+  color: #9ca3af !important;
+  background: transparent !important;
+}
+
+.light button.text-gray-400:hover {
+  color: #d4af37 !important;
+  background-color: rgba(212, 175, 55, 0.1) !important;
+}
+
+/* Search results styling for light mode */
+.light .search-view-more-container {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border-color: rgba(255, 215, 0, 0.2) !important;
+}
+
+.light .search-view-less-container {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border-color: rgba(255, 215, 0, 0.2) !important;
+}
+
+.light .search-results-count {
+  color: #6b7280 !important;
+}
+
+/* Enhanced table styling for search in light mode */
+.light .crypto-table-card {
+  background: rgba(255, 255, 255, 0.98) !important;
+  border-color: rgba(255, 215, 0, 0.3) !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1) !important;
+}
+
+.light .table-header {
+  background: rgba(255, 255, 255, 0.9) !important;
+  color: #6b7280 !important;
+  border-color: rgba(255, 215, 0, 0.2) !important;
+}
+
+/* Enhanced row styling for light mode */
+.light .crypto-row {
+  background: rgba(255, 255, 255, 0.8) !important;
+  border-color: rgba(255, 215, 0, 0.15) !important;
+}
+
+.light .crypto-row:hover {
+  background: rgba(255, 215, 0, 0.08) !important;
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.15) !important;
+}
+
+/* View more button styling for light mode */
+.light .view-more-btn {
+  box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3) !important;
+}
+
+.light .view-more-btn:hover {
+  box-shadow: 0 12px 25px rgba(255, 215, 0, 0.4) !important;
+}
+
+.light .view-less-btn {
+  border-color: #d4af37 !important;
+  color: #d4af37 !important;
+  background: rgba(255, 255, 255, 0.9) !important;
+}
+
+.light .view-less-btn:hover {
+  background: rgba(212, 175, 55, 0.1) !important;
+}
+
+/* Search Dropdown Styling */
+.search-dropdown {
+  backdrop-filter: blur(8px);
+  background: rgb(17, 24, 39);
+  border: 2px solid rgba(75, 85, 99, 0.8);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+  isolation: isolate;
+  pointer-events: auto;
+}
+
+/* Dark mode dropdown header */
+.search-dropdown-header {
+  background: rgb(31, 41, 55);
+  border-bottom: 1px solid rgba(75, 85, 99, 0.8);
+}
+
+/* Dark mode dropdown title */
+.search-dropdown-title {
+  color: #d1d5db;
+  font-weight: 600;
+}
+
+/* Dark mode dropdown items */
+.search-dropdown-item {
+  border-bottom: 1px solid rgba(75, 85, 99, 0.3);
+}
+
+.search-dropdown-item:hover {
+  background: rgba(255, 215, 0, 0.1);
+}
+
+.search-dropdown-item .coin-name {
+  color: #f9fafb;
+}
+
+.search-dropdown-item .coin-symbol {
+  color: #9ca3af;
+}
+
+.search-dropdown-item .coin-price {
+  color: #f9fafb;
+}
+
+.light .search-dropdown {
+  background: rgba(255, 255, 255, 0.98) !important;
+  border: 2px solid rgba(255, 215, 0, 0.3) !important;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
+}
+
+.light .search-dropdown-header {
+  background: rgba(255, 215, 0, 0.05) !important;
+  border-bottom: 1px solid rgba(255, 215, 0, 0.2) !important;
+}
+
+.light .search-dropdown-title {
+  color: #374151 !important;
+  font-weight: 600;
+}
+
+.light .search-dropdown-item {
+  border-bottom: 1px solid rgba(255, 215, 0, 0.1) !important;
+}
+
+.light .search-dropdown-item:hover {
+  background: rgba(255, 215, 0, 0.08) !important;
+}
+
+.light .search-dropdown-item .coin-name {
+  color: #111827 !important;
+}
+
+.light .search-dropdown-item .coin-symbol {
+  color: #6b7280 !important;
+}
+
+.light .search-dropdown-item .coin-price {
+  color: #111827 !important;
+}
+
+/* Custom scrollbar for dropdown */
+.search-dropdown-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* Dark mode scrollbar */
+.search-dropdown-content::-webkit-scrollbar-track {
+  background: #374151;
+  border-radius: 3px;
+}
+
+.search-dropdown-content::-webkit-scrollbar-thumb {
+  background: #d4af37;
+  border-radius: 3px;
+}
+
+.search-dropdown-content::-webkit-scrollbar-thumb:hover {
+  background: #b8941f;
+}
+
+/* Light mode scrollbar */
+.light .search-dropdown-content::-webkit-scrollbar-track {
+  background: #f1f5f9 !important;
+}

@@ -1,0 +1,22 @@
+/* MiniChart Theme Styles */
+.mini-chart-svg {
+  background: rgba(31, 41, 55, 0.3);
+  transition: background 0.3s ease;
+}
+
+.light .mini-chart-svg {
+  background: rgba(255, 255, 255, 0.9) !important;
+}
+
+.mini-chart-no-data {
+  background: rgba(31, 41, 55, 0.3);
+  transition: background 0.3s ease;
+}
+
+.light .mini-chart-no-data {
+  background: rgba(255, 255, 255, 0.9) !important;
+}
+
+.light .mini-chart-no-data span {
+  color: #9ca3af !important;
+}

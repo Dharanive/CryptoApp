@@ -1,0 +1,104 @@
+/* Light theme navbar styles */
+.navbar-cryptos {
+  transition: all 0.3s ease;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  z-index: 9999 !important;
+}
+
+.light .navbar-cryptos {
+  background: rgba(255, 255, 255, 0.7) !important;
+  border-color: #e6d5a3 !important;
+}
+
+.light .navbar-text {
+  color: #374151 !important;
+}
+
+.light .navbar-logo-text {
+  color: #111827 !important;
+}
+
+.light .navbar-select {
+  background: #ffffff !important;
+  border-color: #d4af37 !important;
+  color: #374151 !important;
+}
+
+.light .navbar-mobile-menu {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border-color: #e6d5a3 !important;
+}
+
+.light .navbar-mobile-text {
+  color: #374151 !important;
+}
+
+.light .navbar-mobile-button {
+  color: #374151 !important;
+}
+
+/* Currency dropdown styling */
+.light .navbar-select-content {
+  background: #ffffff !important;
+  border-color: #e6d5a3 !important;
+}
+
+.light .navbar-select-item {
+  color: #374151 !important;
+  background: #ffffff !important;
+}
+
+.light .navbar-select-item:hover {
+  background: rgba(255, 215, 0, 0.1) !important;
+}
+
+/* Completely hide scrollbars */
+body {
+  scrollbar-width: none !important; /* Firefox */
+  -ms-overflow-style: none !important; /* IE and Edge */
+  overflow-x: hidden !important;
+}
+
+body::-webkit-scrollbar {
+  display: none !important; /* Chrome, Safari and Opera */
+}
+
+html {
+  scrollbar-width: none !important; /* Firefox */
+  -ms-overflow-style: none !important; /* IE and Edge */
+  overflow-x: hidden !important;
+}
+
+html::-webkit-scrollbar {
+  display: none !important; /* Chrome, Safari and Opera */
+}
+
+/* Fix dropdown to prevent scrollbar */
+.navbar-select-content {
+  max-height: 120px !important;
+  overflow: hidden !important;
+  z-index: 9999;
+  width: 100px;
+}
+
+/* Target the Radix UI select content specifically */
+[data-radix-select-content] {
+  max-height: 120px !important;
+  overflow: hidden !important;
+  position: fixed !important;
+}
+
+/* Fix any layout shift issues when dropdown opens */
+.navbar-cryptos {
+  position: relative;
+  z-index: 50;
+}
+
+/* Ensure dropdown doesn't cause horizontal scroll */
+* {
+  box-sizing: border-box;
+}

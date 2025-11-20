@@ -53,6 +53,11 @@
     padding: 0 10px;
     border-bottom: 1px solid #5f5d5f;
     list-style: none;
+    transition: border-bottom 0.3s ease;
+}
+
+.light .coin-info ul{
+    border-bottom: 1px solid #d4af37;
 }
 .coin-info ul li:last-child{
     font-weight: 300;
